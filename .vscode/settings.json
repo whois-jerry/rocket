@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "34.126.172.116",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "MySQL Dummy",
+            "username": "root",
+            "password": "fintechsglab",
+            "database": "b10_Group3_Rocket"
+        }
+    ]
+}

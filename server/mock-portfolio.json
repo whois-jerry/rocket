@@ -1,0 +1,39 @@
+{
+  "portfolios": [
+    {
+      "user_id": "1",
+      "googl": "50",
+      "aapl": "25",
+      "sbux": "50",
+      "plby": "25"
+    },
+    {
+      "user_id": "2",
+      "baba": "10",
+      "aapl": "15",
+      "sbux": "20",
+      "amzn": "10"
+    },
+    {
+      "user_id": "3",
+      "tsla": "30",
+      "gme": "10",
+      "adbe": "22",
+      "nflx": "40"
+    },
+    {
+      "user_id": "4",
+      "amc": "20",
+      "tsla": "20",
+      "googl": "20",
+      "orcl": "10"
+    },
+    {
+        "user_id": "5",
+        "pins": "50",
+        "fb": "40",
+        "lnkd": "30",
+        "dv": "65"
+      }
+  ]
+}
