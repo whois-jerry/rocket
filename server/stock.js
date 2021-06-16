@@ -27,13 +27,13 @@ var magic = database.connection
 // The syntax for the .get() method goes like
 // router.get('/route', (req, res))
 
-router.get('/stockprice/price', (req, res) => {
+router.get('/stockinfo/price', (req, res) => {
 
     // The syntax for the .query() method goes like....
     // magic.query('SQL Syntax', (error, results))
 
     magic.query(
-        `select price from stockprice 
+        `select * from stockinfo 
         where stock_id = '${req.query.stock_id}'`,
         (error, results) => {
             if (error) {

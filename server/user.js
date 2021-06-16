@@ -34,7 +34,6 @@ router.post('/user/add', (req, res) => {
     if (typeof(req.query.name) != 'string') {
         console.log(`Invalid user name received: ${req.query.name}`)
         response.status(400).send("Invalid user name received.");
-        alert('Please enter a valid user name.')
         return;
     }
 
@@ -64,7 +63,6 @@ router.get('/user/bal', (req, res) => {
     if (typeof(req.query.name) != 'string') {
         console.log(`Invalid user name received: ${req.query.name}`)
         response.status(400).send("Invalid user name received.");
-        alert('Please enter a valid user name.')
         return;
     }
 
@@ -95,13 +93,11 @@ router.put('/user/newbal', (req, res) => {
     if (typeof(req.query.name) != 'string') {
         console.log(`Invalid user name received: ${req.query.name}`)
         response.status(400).send("Invalid user name received.");
-        alert('Please enter a valid user name.')
         return;
     }
     else if (req.body.balance < 0) {
         console.log(`Cannot update an invalid balance: ${req.body.balance}`)
         response.status(400).send("Cannot update an invalid balance.");
-        alert('Please enter a valid balance.')
         return;
     }
 
@@ -120,6 +116,75 @@ router.put('/user/newbal', (req, res) => {
             else {
                 console.log(results)
                 res.status(200).send(`Account balance updated!`)
+            }
+        }
+    )
+});
+
+// ADD SPECIFIC VALUE TO CURRENT BALANCE, BY USER FULLNAME
+
+router.put('/user/addbal', (req, res) => {
+    if (typeof(req.query.name) != 'string') {
+        console.log(`Invalid user name received: ${req.query.name}`)
+        response.status(400).send("Invalid user name received.");
+        return;
+    }
+    else if (req.body.balance < 0) {
+        console.log(`Cannot update an invalid balance: ${req.body.balance}`)
+        response.status(400).send("Cannot update an invalid balance.");
+        return;
+    }
+
+    // The syntax for the .query() method goes like....
+    // magic.query('SQL Syntax', (error, results))
+
+    magic.query(
+        `update user
+        set balance =  balance + ${req.body.amount}
+        where fullname = '${req.query.name}'`, 
+        (error, results) => {
+            if (error) {
+                console.log(error)
+                res.status(500).send(`Internal Server Error`)
+            }
+            else {
+                console.log(results)
+                res.status(200).send(`Successfully Added to Account Balance!`)
+            }
+        }
+    )
+});
+
+// SUBTRACT SPECIFIC VALUE TO CURRENT BALANCE, BY USER FULLNAME
+
+router.put('/user/wthdrwbal', (req, res) => {
+    if (typeof(req.query.name) != 'string') {
+        console.log(`Invalid user name received: ${req.query.name}`)
+        response.status(400).send("Invalid user name received.");
+
+        return;
+    }
+    else if (req.body.balance < 0) {
+        console.log(`Cannot update an invalid balance: ${req.body.balance}`)
+        response.status(400).send("Cannot update an invalid balance.");
+        return;
+    }
+
+    // The syntax for the .query() method goes like....
+    // magic.query('SQL Syntax', (error, results))
+
+    magic.query(
+        `update user
+        set balance =  balance - ${req.body.amount}
+        where fullname = '${req.query.name}'`, 
+        (error, results) => {
+            if (error) {
+                console.log(error)
+                res.status(500).send(`Internal Server Error`)
+            }
+            else {
+                console.log(results)
+                res.status(200).send(`Successfully Withdrawn from Account Balance!`)
             }
         }
     )
