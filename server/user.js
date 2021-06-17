@@ -41,8 +41,8 @@ router.post('/user/add', (req, res) => {
     // magic.query('SQL Syntax', (error, results))
 
     magic.query(
-        `insert into user (user_id, fullname, balance)
-        values (${req.query.id}, '${req.query.name}', 0)`, 
+        `insert into user (fullname, balance)
+        values ('${req.query.name}', 0.01)`, 
         (error, results) => {
             if (error) {
                 console.log(error);
