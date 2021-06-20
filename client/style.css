@@ -26,7 +26,7 @@ body {
     /*margin: 30px auto;*/
     width: 350px;
     text-align: center;
-    line-height: 0.4em;
+    line-height: 0.5em;
 }
 
 .clickbtn {
@@ -69,4 +69,14 @@ td {
 
 .navlinksB {
     font-size: 12px;
+}
+
+#stockinfo {
+    text-align: center;
+}
+
+#assetprofile {
+    font-size: 16px;
+    padding-left: 75px;
+    padding-right: 75px;
 }

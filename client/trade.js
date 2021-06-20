@@ -1,4 +1,3 @@
-let stockSymbol = document.getElementById(`stocksymbol`);
 
 // This calls the stored value in sessionStorage
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage
@@ -217,12 +216,13 @@ function getTradeBal() {
 
 function getStockPrice() {
   let stock = document.getElementById(`stocksymbol`).value;
+  sessionStorage.setItem("stockSymbol", stock);
   fetch(
     `https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=${stock}`,
     {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "daf1ecb604mshf39d0f3eb98728cp19a5f8jsnb4e9180c3729",
+        "x-rapidapi-key": "4ed5a320f4msh5cfc4ef7d16f2e2p1e376djsn145186147443",
         "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
       },
     }
@@ -261,7 +261,7 @@ function updateBalance() {
 */
 
 // This allows us to hit 'Enter" on the Stock Symbol form field to execute getStockPrice
-stockSymbol.addEventListener("keypress", function (event) {
+stocksymbol.addEventListener("keypress", function (event) {
   if (event.defaultPrevented) {
     return;
   }
