@@ -32,9 +32,9 @@ router.post('/transaction/add', (req, res) => {
     // magic.query('SQL Syntax', (error, results))
 
     magic.query(
-        `insert into transaction (transaction_id, user_id, stock, quantity, transaction_type)
-        values ('${req.query.transaction_id}', '${req.query.user_id}',
-        '${req.query.stock}', '${req.query.quantity}', '${req.query.transaction_type}')`, 
+        `insert into transaction (stock, quantity, transaction_type, price, amount, fullname)
+        values ('${req.query.stock}', '${req.query.quantity}', '${req.query.transaction_type}', 
+        '${req.query.price}', '${req.query.amount}', '${req.query.fullname}')`, 
         (error, results) => {
             if (error) {
                 console.log(error);
@@ -47,8 +47,8 @@ router.post('/transaction/add', (req, res) => {
     );
 });
 
-router.get("/transaction/all", (req, res) => {
-    magic.query(`select * from transaction`, (error, results) => {
+router.get("/transaction/view", (req, res) => {
+    magic.query(`select * from transaction where fullname = '${req.query.fullname}'`, (error, results) => {
         if (error) {
             console.log(error);
             res.status(500).send("Internal Server Error");
@@ -56,6 +56,64 @@ router.get("/transaction/all", (req, res) => {
             res.status(200).send(results);
         }
     });
+});
+
+router.get('/user/bal', (req, res) => {
+    if (typeof(req.query.name) != 'string') {
+        console.log(`Invalid user name received: ${req.query.name}`)
+        response.status(400).send("Invalid user name received.");
+        return;
+    }
+
+    // The syntax for the .query() method goes like....
+    // magic.query('SQL Syntax', (error, results))
+
+    magic.query(
+        `select balance from user 
+        where fullname = '${req.query.name}'`,
+        (error, results) => {
+            if (error) {
+                console.log(error)
+                res.status(500).send(`Internal Server Error`)
+            }
+            else {
+                console.log(results)
+                res.status(200).send(results)
+            }
+        } 
+    );
+});
+
+router.put('/user/newbal', (req, res) => {
+    if (typeof(req.query.name) != 'string') {
+        console.log(`Invalid user name received: ${req.query.name}`)
+        response.status(400).send("Invalid user name received.");
+        return;
+    }
+    else if (req.body.balance < 0) {
+        console.log(`Cannot update an invalid balance: ${req.body.balance}`)
+        response.status(400).send("Cannot update an invalid balance.");
+        return;
+    }
+
+    // The syntax for the .query() method goes like....
+    // magic.query('SQL Syntax', (error, results))
+
+    magic.query(
+        `update user
+        set balance = ${req.body.balance}
+        where fullname = '${req.query.name}'`, 
+        (error, results) => {
+            if (error) {
+                console.log(error)
+                res.status(500).send(`Internal Server Error`)
+            }
+            else {
+                console.log(results)
+                res.status(200).send(`Account balance updated!`)
+            }
+        }
+    )
 });
 
 module.exports = {

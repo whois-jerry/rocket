@@ -8,11 +8,25 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.container {
-    margin: 30px auto;
+.containerA {
+    /*margin: 30px auto;*/
     width: 350px;
     text-align: center;
     line-height: 0.75em;
+}
+
+.containerB {
+    /*margin: 30px auto;*/
+    width: 350px;
+    text-align: center;
+    line-height: 0.75em;
+}
+
+.containerC {
+    /*margin: 30px auto;*/
+    width: 350px;
+    text-align: center;
+    line-height: 0.4em;
 }
 
 .clickbtn {
@@ -39,4 +53,20 @@ body {
 
 #form {
     padding:5px;
+}
+
+.mypanel {
+    text-align: center;
+}
+
+td {
+    width: 100px;
+}
+
+.navlinks {
+    font-size: 14px;
+}
+
+.navlinksB {
+    font-size: 12px;
 }

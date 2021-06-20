@@ -4,13 +4,58 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="style.css" />
 
     <title>Rocket</title>
   </head>
 
-  <body>
-    <h3>Trade</h3>
-    <a class="navlinks" href="market.html">Market </a>
+  <body onload="getBal()">
+    <!--<img
+      src="https://uploads-ssl.webflow.com/6068347705ece0260dd91c50/606e40c79f107c369364edc0_finance.gif"
+      height="250px"
+      width="485px"
+    />-->
+    <img
+      src="https://global-uploads.webflow.com/59deb588800ae30001ec19c9/5d5971c94a2e8634feb01fa0_header-graphic_final.gif"
+      height="250px"
+    />
+    <br />
+
+    <form id="form">
+      <input id="stocksymbol" placeholder="Enter stock symbol" type="text" />
+    </form>
+    <br />
+
+    <a class="navlinksB" href="market.html"> More Details </a>
+
+    <div class="containerB">
+      <h1 id="stockprice">$0.00</h1>
+      <h4>Stock Price</h4>
+    </div>
+
+    <button id="getprice" class="clickbtn">Get Quote</button>
+    <br />
+
+    <h3>Place Order</h3>
+
+    <input id="tradeqty" placeholder="Enter quantity" type="text" />
+    <br />
+
+    <button id="tradebuy" class="clickbtn" onclick="buyTrade()">Buy</button>
+    <button id="tradesell" class="clickbtn" onclick="sellTrade()">Sell</button>
+
+    <h3>Transaction History</h3>
+    <button type="submit" class="clickbtn" onclick="getTrade()">View</button>
+    <div class="mypanel"></div>
+
+    <p></p>
+
+    <script src="trade.js"></script>
   </body>
+
+  <footer>
+    <a class="navlinks" href="main.html"> Account</a> |
+    <a class="navlinks" href="index.html"> Logout</a>
+  </footer>
 </html>

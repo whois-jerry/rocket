@@ -9,7 +9,8 @@
     <title>Rocket</title>
   </head>
 
-  <body>
+  <body onload="getBal()">
+    <!--
     <h3>Let's Start by logging in!</h3>
 
     <form id="form">
@@ -18,11 +19,16 @@
 
     <button id="login" class="clickbtn">Login</button>
     <button id="signup" class="clickbtn">Sign Up</button>
+    -->
 
-    <div class="container">
+    <p>
+    <div class="containerA">
       <h2>My Balance</h2>
       <h1 id="balance">$0.00</h1>
     </div>
+    </p>
+
+    <a class="navlinks" href="trade.html">Let's Trade </a>
 
     <img
       src="https://media-exp3.licdn.com/dms/image/C4E12AQECCkK6t8a1Cw/article-cover_image-shrink_600_2000/0/1568816123315?e=1628726400&v=beta&t=NnCOjvTQCinsNhuduPjruIp2d_BR48T0KSsOyJvLbQM"
@@ -34,21 +40,22 @@
     <form id="form">
       <input id="amount" placeholder="Enter amount" type="text" />
     </form>
+    <br>
 
     <button id="addbal" class="clickbtn">Deposit</button>
     <button id="takebal" class="clickbtn">Withdraw</button>
-
     <p></p>
 
-    <a class="navlinks" href="trade.html">Trade </a>
-
-    <!--
-    <br />
-    <a class="navlinks" href="index.html"> <button>Logout</button>
-    </a>
-    -->
+  <!--
+    <h1 id="tester">Test Area</h1>
+    <button id="test" class="clickbtn" onclick="testOnly()">Test Me!</button>
+  -->
 
     <script src="user.js"></script>
-
   </body>
+
+  <footer>
+    <a class="navlinks" href="trade.html"> Trade</a> | 
+    <a class="navlinks" href="index.html"> Logout</a>
+  </footer>
 </html>
