@@ -7,7 +7,6 @@ const cors = require("cors");
 
 // Import the code from user/stockprice file
 const user = require("./user");
-const stockinfo = require("./stock")
 const transaction = require("./transaction")
 
 // create a service object which will listen to clients' requests
@@ -19,8 +18,6 @@ service.use(cors());
 
 // Import API path mappings from user.js
 service.use(user.router);
-// Import API path mappings from stockprice.js
-service.use(stockinfo.router);
 // Import API path mappings from transaction.js
 service.use(transaction.router);
 
