@@ -7,5 +7,5 @@
 * MYSQL database backend 
 * Real-time stock quotes
 
-### What to expect:
+### What to hope for:
 * TBD
