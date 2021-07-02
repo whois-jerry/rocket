@@ -1,4 +1,3 @@
-# Rocket
 ## A Social Trading Mobile App
 
 ### What to expect:
